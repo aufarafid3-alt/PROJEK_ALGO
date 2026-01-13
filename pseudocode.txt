@@ -1,0 +1,69 @@
+BEGIN
+
+    DECLARE array namaBarang[50]
+    DECLARE array hargaBarang[50]
+    DECLARE array jumlahBarang[50]
+    DECLARE integer pilihan
+    DECLARE integer index ← 0
+    DECLARE integer total
+    DECLARE integer diskon
+
+    DO
+        DISPLAY "=== KASIR MINIMARKET ==="
+        DISPLAY "1. Tambah Barang"
+        DISPLAY "2. Lihat Daftar Belanja"
+        DISPLAY "3. Bayar"
+        DISPLAY "4. Keluar"
+        INPUT pilihan
+
+        SWITCH (pilihan)
+
+            CASE 1:
+                INPUT namaBarang[index]
+                INPUT hargaBarang[index]
+                INPUT jumlahBarang[index]
+                index ← index + 1
+                DISPLAY "Barang berhasil ditambahkan"
+                BREAK
+
+            CASE 2:
+                DISPLAY "DAFTAR BELANJA"
+                IF index = 0 THEN
+                    DISPLAY "Belum ada barang"
+                ELSE
+                    FOR i ← 0 TO index - 1 DO
+                        DISPLAY namaBarang[i], hargaBarang[i], jumlahBarang[i]
+                    END FOR
+                END IF
+                BREAK
+
+            CASE 3:
+                total ← 0
+                FOR i ← 0 TO index - 1 DO
+                    total ← total + (hargaBarang[i] × jumlahBarang[i])
+                END FOR
+
+                DISPLAY "Total Belanja = ", total
+
+                IF total ≥ 100000 THEN
+                    diskon ← total × 10 / 100
+                    DISPLAY "Diskon 10% = ", diskon
+                    total ← total - diskon
+                END IF
+
+                DISPLAY "Total Bayar = ", total
+                DISPLAY "Terima kasih telah berbelanja"
+                BREAK
+
+            CASE 4:
+                DISPLAY "Program selesai"
+                BREAK
+
+            DEFAULT:
+                DISPLAY "Pilihan tidak valid"
+
+        END SWITCH
+
+    WHILE pilihan ≠ 4
+
+END
