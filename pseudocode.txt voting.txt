@@ -1,0 +1,48 @@
+BEGIN
+
+    DECLARE array suara[3] ← {0, 0, 0}
+    DECLARE integer pilihan
+
+    DO
+        DISPLAY "=== SISTEM VOTING ==="
+        DISPLAY "1. Kandidat A"
+        DISPLAY "2. Kandidat B"
+        DISPLAY "3. Kandidat C"
+        DISPLAY "4. Lihat Hasil"
+        DISPLAY "5. Keluar"
+        INPUT pilihan
+
+        SWITCH (pilihan)
+
+            CASE 1:
+                suara[0] ← suara[0] + 1
+                DISPLAY "Vote untuk Kandidat A"
+                BREAK
+
+            CASE 2:
+                suara[1] ← suara[1] + 1
+                DISPLAY "Vote untuk Kandidat B"
+                BREAK
+
+            CASE 3:
+                suara[2] ← suara[2] + 1
+                DISPLAY "Vote untuk Kandidat C"
+                BREAK
+
+            CASE 4:
+                DISPLAY "Hasil Voting"
+                DISPLAY suara[0], suara[1], suara[2]
+                BREAK
+
+            CASE 5:
+                DISPLAY "Voting selesai"
+                BREAK
+
+            DEFAULT:
+                DISPLAY "Pilihan tidak valid"
+
+        END SWITCH
+
+    WHILE pilihan ≠ 5
+
+END
